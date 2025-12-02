@@ -11,6 +11,7 @@ import pymysql
 import traceback
 import time
 from urllib.parse import quote_plus, urlparse, unquote, parse_qs
+import os
 
 # Flask app
 app = Flask(__name__)
@@ -647,7 +648,8 @@ def health():
     return 'ok'
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
 
 # app.py - Parte 2/3
 # Funções para raspagem com seletores atualizados e validação de links
@@ -1227,3 +1229,4 @@ def health():
 # ---------------------------
 if __name__ == "__main__":
     app.run(debug=True)
+
