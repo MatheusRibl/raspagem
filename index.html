@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Analisador de Notícias</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="{{ tema }}">
+
+<header class="header">
+    <div class="user-info">
+        👤 {{ user_name }}
+        <a href="{{ url_for('logout') }}" class="logout-btn">Sair</a>
+    </div>
+</header>
+
+<main class="container">
+
+    <h1>📰 Analisador de Notícias</h1>
+
+    <form method="POST">
+        <input type="text" name="termo" placeholder="Buscar..." required>
+        <button>Buscar</button>
+    </form>
+
+    {% if termo %}
+    <h2>Resultados para: <span>{{ termo }}</span></h2>
+
+    <div class="sentimentos">
+        <div class="positivo">😊 {{ sentimentos['positivo'] }}</div>
+        <div class="negativo">😡 {{ sentimentos['negativo'] }}</div>
+        <div class="neutro">😐 {{ sentimentos['neutro'] }}</div>
+    </div>
+    {% endif %}
+
+    <section class="noticias">
+        {% for n in resultados %}
+        <article class="noticia {{ n.sentimento }}">
+            <h3>{{ n.titulo }}</h3>
+
+            <p class="meta">
+                <span class="badge">{{ n.fonte }}</span>
+
+                {% if n.sentimento == 'positivo' %}
+                    <span class="badge positivo">Positivo</span>
+                {% elif n.sentimento == 'negativo' %}
+                    <span class="badge negativo">Negativo</span>
+                {% else %}
+                    <span class="badge neutro">Neutro</span>
+                {% endif %}
+            </p>
+
+            <a href="{{ n.link }}" target="_blank">Abrir notícia</a>
+
+            <!-- REMOVIDO: link original feio do Google -->
+            <!-- Antes aparecia "/url?q=..." aqui -->
+        </article>
+        {% endfor %}
+    </section>
+
+</main>
+
+</body>
+</html>

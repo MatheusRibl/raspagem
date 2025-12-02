@@ -1,0 +1,8 @@
+Flask==3.0.3
+requests==2.32.3
+beautifulsoup4==4.12.3
+textblob==0.18.0.post0
+deep-translator==1.11.4
+pymysql==1.1.1
+selenium==4.24.0
+urllib3==2.2.3

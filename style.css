@@ -1,0 +1,347 @@
+/* ================================
+   CONFIGURAÇÕES BASE DO TEMA
+================================ */
+
+:root {
+    --bg: #f5f7fa;
+    --bg-card: #ffffff;
+    --bg-alt: #eef3f9;
+
+    --text: #222;
+    --text-muted: #555;
+
+    --primary: #0073e6;
+    --primary-dark: #005bb5;
+
+    --positive-bg: #d4edda;
+    --positive-text: #155724;
+
+    --negative-bg: #f8d7da;
+    --negative-text: #721c24;
+
+    --neutral-bg: #fff3cd;
+    --neutral-text: #856404;
+
+    --border: #dce3ec;
+
+    --shadow: rgba(0,0,0,0.08);
+}
+
+/* TEMA ESCURO */
+body.escuro {
+    --bg: #0f1115;
+    --bg-card: #1b1e24;
+    --bg-alt: #2a2e37;
+
+    --text: #eaeaea;
+    --text-muted: #b5b5b5;
+
+    --primary: #4aa8ff;
+    --primary-dark: #0d8eff;
+
+    --border: #2c313a;
+    --shadow: rgba(0,0,0,0.16);
+}
+
+/* ================================
+   ESTILO GLOBAL
+================================ */
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Scroll suave */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ================================
+   AUTENTICAÇÃO (LOGIN / REGISTER)
+================================ */
+
+.auth-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.auth-container {
+    background: var(--bg-card);
+    padding: 40px;
+    border-radius: 14px;
+    width: 90%;
+    max-width: 380px;
+    box-shadow: 0 4px 16px var(--shadow);
+    animation: slideUp 0.4s ease;
+}
+
+.auth-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--primary);
+}
+
+.auth-container form input {
+    width: 100%;
+    padding: 12px;
+    margin: 6px 0;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--bg-alt);
+    color: var(--text);
+    font-size: 15px;
+}
+
+.auth-container button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.auth-container button:hover {
+    background: var(--primary-dark);
+}
+
+.auth-container .muted {
+    text-align: center;
+    margin-top: 15px;
+    color: var(--text-muted);
+}
+
+.auth-container a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+/* Flash messages */
+.flash-box { margin-bottom: 12px; }
+.flash {
+    padding: 10px;
+    background: var(--negative-bg);
+    color: var(--negative-text);
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+
+/* ================================
+   HEADER
+================================ */
+
+.header {
+    width: 100%;
+    padding: 14px;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+.user-info {
+    display: flex;
+    justify-content: space-between;
+    max-width: 900px;
+    margin: auto;
+    color: var(--text-muted);
+}
+
+.logout-btn {
+    background: var(--negative-bg);
+    color: var(--negative-text);
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.logout-btn:hover {
+    filter: brightness(0.9);
+}
+
+/* ================================
+   CONTAINER PRINCIPAL
+================================ */
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: var(--primary);
+    margin-bottom: 25px;
+}
+
+form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+form input[type="text"] {
+    flex: 1;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    color: var(--text);
+}
+
+form button {
+    padding: 12px 20px;
+    border-radius: 10px;
+    border: none;
+    background: var(--primary);
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+form button:hover {
+    background: var(--primary-dark);
+}
+
+/* ================================
+   SEÇÃO DE SENTIMENTOS
+================================ */
+
+.sentimentos {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+    gap: 20px;
+}
+
+.sentimentos div {
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+.positivo { background: var(--positive-bg); color: var(--positive-text); }
+.negativo { background: var(--negative-bg); color: var(--negative-text); }
+.neutro   { background: var(--neutral-bg);   color: var(--neutral-text); }
+
+/* ================================
+   LISTA DE NOTÍCIAS
+================================ */
+
+.noticias {
+    display: grid;
+    gap: 25px;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.noticia {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 6px solid var(--primary);
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--shadow);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    animation: fadeIn 0.4s ease;
+}
+
+.noticia:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px var(--shadow);
+}
+
+/* Sentimento bordas */
+.noticia.positivo { border-left-color: var(--positive-text); }
+.noticia.negativo { border-left-color: var(--negative-text); }
+.noticia.neutro   { border-left-color: var(--neutral-text); }
+
+.noticia h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: var(--text);
+    min-height: 60px;
+}
+
+.noticia a {
+    text-decoration: none;
+    background: var(--primary);
+    padding: 8px 12px;
+    display: inline-block;
+    color: white;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.noticia a:hover {
+    background: var(--primary-dark);
+}
+
+.badge {
+    padding: 4px 8px;
+    border-radius: 6px;
+    background: var(--bg-alt);
+    color: var(--text-muted);
+    font-size: 12px;
+    margin-right: 6px;
+}
+
+/* ================================
+   ONBOARDING
+================================ */
+
+.onboard-container {
+    animation: fadeIn 0.5s ease;
+}
+
+.step {
+    animation: fadeIn 0.3s ease;
+}
+
+/* ================================
+   ANIMAÇÕES
+================================ */
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ================================
+   RESPONSIVIDADE
+================================ */
+
+@media (max-width: 600px) {
+    form {
+        flex-direction: column;
+    }
+
+    .sentimentos {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .noticias {
+        grid-template-columns: 1fr;
+    }
+
+    .user-info {
+        flex-direction: column;
+        text-align: center;
+    }
+}
